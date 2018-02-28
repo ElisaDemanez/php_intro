@@ -1,3 +1,4 @@
+
 <h1> Blog</h1>
 <div class="row">
 <form action ="" method="POST" class="input-field col s3" id="blog_form">
@@ -6,19 +7,19 @@
       <option value="ASC">Asc</option>
       <option value="DESC">Desc</option>
     </select>
+
     <noscript>
       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
       <i class="material-icons right">send</i>
       </button>
     </noscript>
+
   </form>
   </div>
 <?php
 
         
-$connection = mysqli_connect("localhost","root","sqlroot", "php")
-or die("Impossible de se connecter : " . mysqli_error());
-            
+// if sorted           
 if($_POST['option'])  {
   $order = $_POST['option'];
   $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date $order" );
@@ -27,6 +28,8 @@ if($_POST['option'])  {
 else {
 $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date DESC" );
 }
+
+
 while ($article = $myarticles->fetch_assoc()) {
         ?> 
   
@@ -42,7 +45,7 @@ while ($article = $myarticles->fetch_assoc()) {
                  <small>   <?php print  $article['date'] ?> </small>
             </div>
             <div class="card-action">
-              <a href="index.php?selected=article&amp;num= <?php print  $article['id']; ?> ">Read more</a>
+              <a href="index.php?selected=article&amp;id= <?php print  $article['id']; ?> ">Read more</a>
             </div>
           </div>
         </div>

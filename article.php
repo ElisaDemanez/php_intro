@@ -1,11 +1,9 @@
-
 <?php
-$num = ($_GET['num']);
 
-$connection = mysqli_connect("localhost","root","sqlroot", "php")
-or die("Impossible de se connecter : " . mysqli_error());
+
+$id = ($_GET['id']);
             
-$article = $connection->query("SELECT * FROM `blog_article` WHERE id= $num" )->fetch_assoc();
+$article = $connection->query("SELECT * FROM `blog_article` WHERE id= $id" )->fetch_assoc();
 
 ?> 
 <div class="blog">
