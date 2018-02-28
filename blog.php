@@ -1,18 +1,32 @@
 <h1> Blog</h1>
-
+<div class="row">
+<form action ="" method="POST" class="input-field col s3" id="blog_form">
+    <select name="option" id = "blog_filter">
+      <option value="" disabled selected>Order By</option>
+      <option value="ASC">Asc</option>
+      <option value="DESC">Desc</option>
+    </select>
+    <noscript>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <i class="material-icons right">send</i>
+      </button>
+    </noscript>
+  </form>
+  </div>
 <?php
 
         
 $connection = mysqli_connect("localhost","root","sqlroot", "php")
 or die("Impossible de se connecter : " . mysqli_error());
             
+if($_POST['option'])  {
+  $order = $_POST['option'];
+  $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date $order" );
+}
+
+else {
 $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date DESC" );
-
-    
-// if($row = $myuser->fetch_assoc()) { echo "1"; }  
-// else {echo "0" ;}
-
-   
+}
 while ($article = $myarticles->fetch_assoc()) {
         ?> 
   
