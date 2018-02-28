@@ -1,28 +1,29 @@
 <?php  if (!isset($_SESSION['username'])) :?>                                            Ya'll need to be logged in ma boi
  <?php endif ?>
                         
+<!-- if logged in -->
+<?php  if (isset($_SESSION['username'])) :       
 
-<?php  if (isset($_SESSION['username'])) :?>                                    
-
+?>
         <h1>evnts</h1>
         <div class="events">
-        <?php
-        //date checker
+                <?php
 
+//date checker
+$today = getdate();
+$now = $today['year'].'-'.$today['mon'].'-'.$today['mday'];
 
-        $today = getdate();
-             $now = $today['year'].'-'.$today['mon'].'-'.$today['mday'];
+//connection
+$connection = mysqli_connect("localhost","root","sqlroot", "php")
+or die("Impossible de se connecter : " . mysqli_error());
 
-        var_dump($now);
-      
-
-        //connection
-        $connection = mysqli_connect("localhost","root","sqlroot", "php")
-        or die("Impossible de se connecter : " . mysqli_error());
-                
+// if you clicked past events
+if($_GET['past']){  
+          $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending <= '$now' ORDER BY beginning ASC" );;};
+if(!$_GET['past']) {
         $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending >= '$now' ORDER BY beginning ASC" );
 
-        
+}
 
         //print events
         while ($article = $myarticles->fetch_assoc()) {
@@ -52,7 +53,7 @@
         ?> 
 
         </div>
-        <p class="right-align"><a href=""></a>Past event >> </p>
+        <p class="right-align"><a href="index.php?selected=evenements&past=1">Past event >></a> </p>
         <?php
 endif ?>
 
