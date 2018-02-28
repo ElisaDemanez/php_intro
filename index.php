@@ -30,7 +30,7 @@
                                         <a href="index.php?selected=a_propos">A propos</a>
                                 </li>
                                 <li class='nav_items'>
-                                        <a href="index.php?selected=evenements">Evenementes</a>
+                                        <a href="index.php?selected=evenements">Evenements</a>
                                 </li>
                                 <li class='nav_items'>
                                         <a href="index.php?selected=blog">Blog</a>
