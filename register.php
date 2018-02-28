@@ -7,7 +7,10 @@
           <input placeholder="Placeholder" id="username" type="text" class="username" name="username" required>
           <label for="username">Username</label>
         </div>
+        <div class="input-field col s3" id="username_available">
         </div>
+    
+    </div>
 
   <div class="row">
         <div class="input-field col s9">
