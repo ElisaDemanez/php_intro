@@ -1,9 +1,8 @@
-  <?php
-var_dump ($_GET['check']);
-
+ <h1>Register </h1>
+<?php 
+if(isset($error_message)) echo $error_message;
 ?>
-  
-  <h1>Register </h1>
+
 
 <form action="" method="post" name="form_register">
 
@@ -39,38 +38,38 @@ var_dump ($_GET['check']);
 <?php
 
 if($_POST) {
+  
+  if($_POST["password"] != $_POST["conf_password"]){ 
+    $error_message = 'wrong passw';
+    echo'non';
+    }
+    
+    
+  $usernames = mysqli_query($connection, "SELECT * FROM accounts WHERE username = '".$_POST["username"]."'");
+    
+    
+  if($usernames->num_rows != 0) {
+    $error_message= 'username already exist';
+    }
+    
+ $pw_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+ 
+ $sql = "INSERT INTO accounts (username,password)  VALUES ('".$_POST["username"]."','$pw_hash')";
+ 
 
+  if(($_POST["password"] == $_POST["conf_password"] )&& ($usernames->num_rows == 0) ) {
 
-        $connection = mysqli_connect("localhost","root","sqlroot", "php")
-                or die("Impossible de se connecter : " . mysqli_error());
+     if( mysqli_query($connection, $sql)) {
+     
+       $_SESSION['username'] = $_POST['username'];
+       header('Location: index.php?selected=home');
+      } 
 
-        $usernames = mysqli_query($connection, "SELECT * FROM accounts WHERE username = '".$_POST["username"]."'");
-        $pw_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
-
-        $sql = "INSERT INTO accounts (username,password)  VALUES ('".$_POST["username"]."','$pw_hash')";
-        if($_POST["password"] != $_POST["conf_password"])
-        { echo 'wrong passw';}
-
-        elseif($usernames->num_rows != 0) {echo 'username already exist';}
-
-        elseif(($_POST["password"] == $_POST["conf_password"] )&& ($usernames->num_rows == 0) ) {
-
-               if( mysqli_query($connection, $sql)) {
-
-               
-             
-                $_SESSION['username'] = $_POST['username'];
-                header('Location: index.php?selected=home');
-
-        
-            } else {
-        
-                echo "Error: " . $sql . "<br>" . mysqli_error($connection);
-        
-            }
+      else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($connection);
+       }
                 
-        }
+    }
 }
 
 ?>
