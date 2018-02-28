@@ -3,7 +3,9 @@ include 'components/connection.php';
 session_start(); 
 
 $session_username = isset($_SESSION['username']);
+$selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
 ?>
+
 
 
 <!DOCTYPE html>
@@ -17,7 +19,7 @@ $session_username = isset($_SESSION['username']);
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <title>yas</title>
+        <title><?php echo $selected ?> - bonjour</title>
 
 </head>
 <!-- <div id="particle-canvas" > </div> -->
@@ -50,7 +52,7 @@ $session_username = isset($_SESSION['username']);
                         <ul class='right'>
                                 <?php 
                                  if (!isset($_SESSION['username'])) :
-                                 ?>
+                                        ?>
                                 <li class='nav_items'>
                                         <a href="index.php?selected=login">Log In</a>
                                 </li>
@@ -76,32 +78,29 @@ $session_username = isset($_SESSION['username']);
 
 
         <main class="col s9 offset-s1">
-<?php 
-
-
-$selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
-switch($selected) 
-{
-        
-        case 'a_propos';
-        case 'article';
-        case'blog';
-        case'contact';
-        case'evenements';
-        case 'home';
-        case 'login';
-        case 'logout';
-        case 'register';
-        
-        include($selected . '.php');
-        break;
-        
-        default;
-        include('home.php');
-        break;
-}
-
-?>
+                   <?php
+                 switch($selected) 
+                 {
+                                         
+                   case 'a_propos';
+                   case 'article';
+                   case'blog';
+                   case'contact';
+                   case'evenements';
+                   case 'home';
+                   case 'login';
+                   case 'logout';
+                   case 'register';
+                                         
+                  include($selected . '.php');
+                 break;
+                                         
+                         default;
+                         include('home.php');
+                        break;
+                }
+                                 
+        ?>
 </main>
 
 
