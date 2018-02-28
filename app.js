@@ -17,7 +17,7 @@ $('#blog_filter').change(function()
 
 
         $.ajax({
-                url: 'index.php',
+                url: 'register.php',
                 type: 'GET',
                 data: 'check=' + value ,
                 success: function (entry, statut) {

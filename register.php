@@ -1,3 +1,8 @@
+  <?php
+var_dump ($_GET['check']);
+
+?>
+  
   <h1>Register </h1>
 
 <form action="" method="post" name="form_register">
