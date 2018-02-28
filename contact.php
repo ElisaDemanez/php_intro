@@ -29,7 +29,6 @@
                                         You chose  <?php echo $_POST["my_form_option"] ?> as option
                                 </p>
                 <?php 
-                //  else : $option = false;
                    
                 ?>
              
@@ -45,7 +44,7 @@
                                  <p>
                                        You were connected
                                 </p>
-                        <?php
+                        <?php           //  else : $option = false;
                         // else : $connected = false;
                 endif; 
         
@@ -114,18 +113,6 @@
 
             
         </div>
-
-
-        <!-- <div class="row">
-
-                <p class="col s6">
-                        user account ?
-                        <input type="checkbox" id="account" name="your_form_account" value="checked" />
-                        <label for="account"> Yes </label>
-                </p>
-
-
-        </div> -->
 
 
         <input type="submit">
