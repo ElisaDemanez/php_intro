@@ -20,7 +20,7 @@
 
         
 // if sorted           
-if($_POST['option'])  {
+if(isset($_POST['option']))  {
   $order = $_POST['option'];
   $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date $order" );
 }
