@@ -1,0 +1,70 @@
+*{
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+}
+html, body{
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+}
+#particle-canvas {
+        
+        position: absolute ;
+        z-index: -1;
+        top:0;
+        left:0;
+        height: 100vh;
+        width: 100vw;
+}
+.presentation_title {
+        color: white;
+        position :absolute;
+        z-index: 1;
+}
+nav {
+        z-index: 50;
+        position:sticky;
+        top: 0;
+}
+
+main 
+{
+        margin : 5% 10%;
+        text-align: justify;
+}
+
+.events {
+        
+        display :flex;
+        flex-wrap: wrap;
+        
+}
+
+.card {
+
+        margin:30px;
+}
+
+.events .card-image {
+        
+        max-width: 400px;
+}
+
+
+
+.blog {
+        margin: auto;
+        padding : 5%;
+        
+}
+
+.blog .img  {
+        width: auto;
+        max-height: 90vh;
+}
+.blog .date  {
+        
+        font-style: italic;
+        color: rgb(68, 68, 68);
+}
