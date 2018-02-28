@@ -20,18 +20,13 @@
 
         
 // if sorted           
-if(isset($_POST['option']))  {
-  $order = $_POST['option'];
-  $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date $order" );
-}
+isset($_POST['option']) ? $order = $_POST['option']:  $order = 'DESC';
 
-else {
-$myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date DESC" );
-}
+$myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date $order" );
 
 
 while ($article = $myarticles->fetch_assoc()) {
-        ?> 
+?> 
   
 <div class="row">
         <div class="col s12 m7">
