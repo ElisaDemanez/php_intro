@@ -62,6 +62,7 @@ if($_POST) {
      if( mysqli_query($connection, $sql)) {
      
        $_SESSION['username'] = $_POST['username'];
+       $_SESSION['successfully_created'] = true;
        header('Location: index.php?selected=home');
       } 
 

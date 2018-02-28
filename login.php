@@ -43,6 +43,7 @@ if(($account->num_rows == 1) ) {
   if (password_verify($_POST['log_password'], $info['password'])) {
 
    $_SESSION['username'] = $username;
+   $_SESSION['logged_in'] = true;
    header('Location: index.php?selected=home');
   } 
 
