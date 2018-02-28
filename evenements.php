@@ -18,9 +18,11 @@ $connection = mysqli_connect("localhost","root","sqlroot", "php")
 or die("Impossible de se connecter : " . mysqli_error());
 
 // if you clicked past events
-if($_GET['past']){  
+if(isset($_GET['past']))
+{  
           $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending <= '$now' ORDER BY beginning ASC" );;};
-if(!$_GET['past']) {
+if(!isset($_GET['past'])) 
+{
         $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending >= '$now' ORDER BY beginning ASC" );
 
 }
@@ -47,13 +49,21 @@ if(!$_GET['past']) {
                 </div>
                 
 
-
-        <?php
+                <?php
         }
-        ?> 
-
+        ?>
         </div>
-        <p class="right-align"><a href="index.php?selected=evenements&past=1">Past event >></a> </p>
-        <?php
+        <?php 
+        if(isset($_GET['past']))
+        {  ?>
+                <p class="right-align"><a href="index.php?selected=evenements">Current events >></a> </p>
+                <?php
+        };
+         if(!isset($_GET['past']))
+          { ?>
+                <p class="right-align"><a href="index.php?selected=evenements&past=1">Past event >></a> </p>
+                <?php
+          }
+  
 endif ?>
 
