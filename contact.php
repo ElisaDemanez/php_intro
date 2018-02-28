@@ -1,19 +1,21 @@
 <?php
+
+if (!empty($_POST) && (stripos($_POST["my_form_name"],"simplon")=== false )) :
+       
         $name = $_POST["my_form_name"];
         $message = $_POST["my_form_message"];
-        $age = $_POST["age"];
-        $option = $_POST["my_form_option"];
-
-if (!empty($_POST) && (stripos($name,"simplon")=== false )) :
+       
 ?>
         <h5>Your message has been sent succesfully !  </h5>
 
         <p>   <?php echo $name ?>  </p>
         <p>  <?php echo $message ?>  </p>   
        
-       
+   
+ 
        <?php
-        if (!empty($age)) :
+        if (!empty($_POST["age"])) :
+                $age = $_POST["age"];
         ?>
                 <p> You  <?php echo $age ?> yo </p>
         <?php
@@ -21,7 +23,8 @@ if (!empty($_POST) && (stripos($name,"simplon")=== false )) :
         endif; 
         
         
-        if (!empty($option)) :
+        if (!empty($_POST["my_form_option"])) :
+                $option = $_POST["my_form_option"];
         ?>
                 <p>
                 You chose  <?php echo $option ?> as option

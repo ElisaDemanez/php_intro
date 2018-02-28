@@ -1,4 +1,6 @@
-<?php  if (!isset($_SESSION['username'])) :?>                                            Ya'll need to be logged in ma boi
+<?php  
+
+if (!isset($_SESSION['username'])) :?>                                            Ya'll need to be logged in ma boi
  <?php endif ?>
                         
 <!-- if logged in -->
@@ -13,19 +15,12 @@
 $today = getdate();
 $now = $today['year'].'-'.$today['mon'].'-'.$today['mday'];
 
-//connection
-$connection = mysqli_connect("localhost","root","sqlroot", "php")
-or die("Impossible de se connecter : " . mysqli_error());
 
 // if you clicked past events
-if(isset($_GET['past']))
-{  
-          $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending <= '$now' ORDER BY beginning ASC" );;};
-if(!isset($_GET['past'])) 
-{
-        $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending >= '$now' ORDER BY beginning ASC" );
+if(isset($_GET['past']))   $operator = '<=';
+if(!isset($_GET['past']))  $operator = '>='; 
 
-}
+$myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending $operator '$now' ORDER BY beginning ASC" );
 
         //print events
         while ($article = $myarticles->fetch_assoc()) {
@@ -48,8 +43,7 @@ if(!isset($_GET['past']))
                 </div>
                 </div>
                 
-
-                <?php
+         <?php
         }
         ?>
         </div>
@@ -64,6 +58,5 @@ if(!isset($_GET['past']))
                 <p class="right-align"><a href="index.php?selected=evenements&past=1">Past event >></a> </p>
                 <?php
           }
-  
 endif ?>
 
