@@ -1,5 +1,6 @@
  <h1>Register </h1>
 <?php 
+
 if(isset($error_message)) echo $error_message;
 ?>
 
