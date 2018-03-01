@@ -14,3 +14,17 @@ $article = $connection->query("SELECT * FROM `blog_article` WHERE id= $article_i
 
 <p> <?php print $article['texte']; ?> </p>
 </div>
+
+<?php  if (isset($_SESSION['username'])) :   
+?>
+
+
+<a class="waves-effect waves-light btn red right-align" id="delete_confirm" href="index.php?selected=delete_article&article_id=<?php print $article['id']; ?>" >Delete article</a>    
+
+
+<?php
+
+endif;
+?>
+
+
