@@ -1,5 +1,4 @@
-<?php echo 'bjr';
-var_dump($_GET);
+<?php 
 $article_id = $_GET['article_id'];
 
 $sql = "DELETE FROM `blog_article` WHERE `id` = $article_id ";
