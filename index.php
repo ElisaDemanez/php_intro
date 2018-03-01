@@ -91,10 +91,15 @@ $selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
                    case 'login';
                    case 'logout';
                    case 'register';
-                                         
-                  include($selected . '.php');
-                 break;
-                                         
+                   case 'article_create';
+                   
+                        include($selected . '.php');
+                   break;
+
+                   case 'delete_article';
+                        include('components/' . $selected . '.php');
+                         break;
+
                          default;
                          include('home.php');
                         break;
