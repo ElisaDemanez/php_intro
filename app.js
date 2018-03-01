@@ -9,19 +9,24 @@ $('#blog_filter').change(function()
  })
 
 
-//check if pseudo available
+//register :check if pseudo available
  $('#username').keyup(function (el) {
 
         var value = el.target.value;
         $.ajax({
-                url: 'register.php',
+                url: 'components/register_pseudo_checker.php',
                 type: 'GET',
                 data: 'check=' + value ,
                 success: function (entry, statut) {
-
-                       ( $('#username_available'))[0].innerHTML = value;
-                      console.log(($('#username_available'))[0].innerHTML, value)
-
+                        console.log(entry)      
+                       
+                        if (entry == "0") {
+                                 $('#username_available')[0].innerHTML =  "<i class=\"medium material-icons left green_icon\"  >done</i>";
+                        }
+                        if (entry == "1") {
+                        
+                                 $('#username_available')[0].innerHTML = "<i class=\"medium material-icons left red_icon\">close</i>";
+                        }
                 },
                 error: function (resultat, statut, erreur) {
                 },
@@ -33,5 +38,4 @@ $('#blog_filter').change(function()
 
 $('#delete_confirm').click(function (el) {
 confirm('are e sure ? ')
-
 })
