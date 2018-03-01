@@ -30,3 +30,8 @@ $('#blog_filter').change(function()
         });
 })
 
+
+$('#delete_confirm').click(function (el) {
+confirm('are e sure ? ')
+
+})
