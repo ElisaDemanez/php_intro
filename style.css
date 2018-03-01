@@ -68,3 +68,12 @@ main
         font-style: italic;
         color: rgb(68, 68, 68);
 }
+.green_icon {
+
+        color:rgb(23, 168, 23); 
+}
+
+.red_icon {
+
+        color:rgb(211, 12, 12); 
+}
