@@ -1,5 +1,14 @@
+<div class="row">
+  <div class="col s9">
+     <h1> Blog</h1>
+  </div>
+   <div class ="col s3 right-aligned">
+       <a class="btn-floating btn-large waves-effect waves-light" href="index.php?selected=article_create">>
+        <i class="material-icons right">add</i>
+</a>
+  </div>
+</div>
 
-<h1> Blog</h1>
 <div class="row">
 <form action ="" method="POST" class="input-field col s3" id="blog_form">
     <select name="option" id = "blog_filter">
@@ -20,7 +29,7 @@
 
         
 // if sorted           
-isset($_POST['option']) ? $order = $_POST['option']:  $order = 'DESC';
+isset($_POST['option']) ? $order = $_POST['option']:  $order = 'ASC';
 
 $myarticles = $connection->query("SELECT * FROM `blog_article` ORDER BY date $order" );
 
