@@ -3,7 +3,7 @@
      <h1> Blog</h1>
   </div>
    <div class ="col s3 right-aligned">
-       <a class="btn-floating btn-large waves-effect waves-light" href="index.php?selected=article_create">>
+       <a class="btn-floating btn-large waves-effect waves-light" href="index.php?selected=article_create">
         <i class="material-icons right">add</i>
 </a>
   </div>
