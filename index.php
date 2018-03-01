@@ -84,6 +84,7 @@ $selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
                                          
                    case 'a_propos';
                    case 'article';
+                   case 'article_create';
                    case'blog';
                    case'contact';
                    case'evenements';
@@ -91,7 +92,6 @@ $selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
                    case 'login';
                    case 'logout';
                    case 'register';
-                   case 'article_create';
                    
                         include($selected . '.php');
                    break;
