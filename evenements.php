@@ -7,7 +7,19 @@ if (!isset($_SESSION['username'])) :?>                                          
 <?php  if (isset($_SESSION['username'])) :       
 
 ?>
-        <h1>evnts</h1>
+ <div class="row">
+        <div class="col s9">
+                        <h1>evnts</h1>
+        </div>
+        <div class ="col s3 right-aligned">
+        <a class="btn-floating btn-large waves-effect waves-light" href="index.php?selected=event_search">
+                <i class="material-icons right">search</i>
+        </a>
+  </div>
+</div>
+<?php if(isset($_GET['filter'])) :  ?>
+        <p>Showing results for '<?php print $_GET['input'] ?>'</p>
+<?php endif; ?>
         <div class="events">
                 <?php
 
@@ -20,11 +32,29 @@ $now = $today['year'].'-'.$today['mon'].'-'.$today['mday'];
 if(isset($_GET['past']))   $operator = '<=';
 if(!isset($_GET['past']))  $operator = '>='; 
 
-$myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending $operator '$now' ORDER BY beginning ASC" );
+     
+// filters from event_search.php
+if(isset($_GET['filter'])) : 
+        $input =$_GET['input'];
+        $filter = $_GET['filter'];
+
+         $myarticles = mysqli_query($connection,"SELECT * FROM `evenements` WHERE title LIKE '%$input%' AND WHERE ending $operator '$now'");
+       
+        
+        if(isset($filter) == "all" )    
+        {     
+                $myarticles = mysqli_query($connection,"SELECT * FROM `evenements` WHERE `title`  LIKE '%$input%' OR `description` LIKE '%$input%' OR `place` LIKE '%$input%' AND ending $operator '$now'");
+               
+        };
+else : 
+        $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending $operator '$now' ORDER BY beginning ASC" );
+
+
+endif;
 
         //print events
-        while ($article = $myarticles->fetch_assoc()) {
-                ?> 
+while ($article = $myarticles->fetch_assoc()) {
+  ?> 
 
                 <div class="card medium">
                 <div class="card-image waves-effect waves-block waves-light">
@@ -47,16 +77,31 @@ $myarticles = $connection->query("SELECT * FROM `evenements` WHERE ending $opera
         }
         ?>
         </div>
-        <?php 
-        if(isset($_GET['past']))
-        {  ?>
+ <?php 
+if(isset($_GET['past']))
+{  
+        if(isset($_GET['filter'])) :
+                 ?>
+
+                <p class="right-align"><a href="index.php?selected=evenements&filter=<?php  print $_GET['filter']?>&input=<?php print $_GET['input'] ?>">Current events >></a> </p>
+                <?php
+                else : 
+                        ?>
                 <p class="right-align"><a href="index.php?selected=evenements">Current events >></a> </p>
                 <?php
+                endif;
         };
          if(!isset($_GET['past']))
-          { ?>
-                <p class="right-align"><a href="index.php?selected=evenements&past=1">Past event >></a> </p>
-                <?php
+          {
+                if(isset($_GET['filter'])) :
+                ?>
+
+                <p class="right-align"><a href='index.php?selected=evenements&past=1&filter=<?php  print $_GET['filter']?>&input=<?php print $_GET['input'] ?>'>Past event >></a>
+                 </p>
+
+                <?php else : ?>
+                <p class="right-align"><a href="index.php?selected=evenements&past=1">All past event >></a> </p>
+                <?php endif;
           }
 endif ?>
 
