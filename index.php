@@ -88,6 +88,7 @@ $selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
                    case'blog';
                    case'contact';
                    case'evenements';
+                   case'event_search';
                    case 'home';
                    case 'login';
                    case 'logout';
