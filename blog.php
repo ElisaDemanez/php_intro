@@ -60,3 +60,11 @@ while ($article = $myarticles->fetch_assoc()) {
 }; 
 
 
+
+
+// $cities = $connection->query("SELECT DISTINCT  `place` FROM `evenements`" );
+// 
+// while ($citie = $cities->fetch_assoc()) {
+        // echo $citie["place"];
+// }
+// 

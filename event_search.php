@@ -1,15 +1,5 @@
 <?php 
 
-// - La zone de recherche sera constituée:
-//  - D'une zone de saisie de texte
-//  - D'une checkbox avec le libelle suivant: Recherche uniquement dans le titre
-//  - D'un bouton Rechercher. 
-// - Fonctionnement de la recherche:
-// - Au clic sur ce bouton
-//   - Si la zone de saisie est vide on affiche toutes les annonces.
-//   - Si la zone de saisie contient du texte
-//     - Si la checkbox est cochée on affichera les évenements dont le titre contiennent la séquence de texte saisie par l'utilisateur.
-//     - Si la checkbox n'est pas cochée on affichera les évenements dont le titre et/ou la description contiennent la séquence de texte saisie par l'utilisateur.
 if($_POST) :
     $input = $_POST['my_form_input'];
 
@@ -34,14 +24,8 @@ if($_POST) :
         $filter = "all";
     endif;
 
-    header('Location: index.php?selected=evenements&filter='.$filter.'&input='.$input.'');
+    header('Location: index.php?selected=evenements&filter='.$filter.'&input='.$input.'&page=0');
    
-
-
-    // while($info = $sql->fetch_assoc()) {
-
-    //     var_dump($info['title']);
-    // }
 
 endif;
 

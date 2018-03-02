@@ -39,7 +39,7 @@ $selected = isset($_GET['selected']) ? $_GET['selected'] : NULL;
                                         <a href="index.php?selected=a_propos">A propos</a>
                                 </li>
                                 <li class='nav_items'>
-                                        <a href="index.php?selected=evenements">Evenements</a>
+                                        <a href="index.php?selected=evenements&page=0">Evenements</a>
                                 </li>
                                 <li class='nav_items'>
                                         <a href="index.php?selected=blog">Blog</a>
